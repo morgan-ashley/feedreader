@@ -2,6 +2,7 @@
 
 A web-based application that reads RSS feeds. I learned how to use Jasmine and write different tests for an existing application. These test the underlying logic of the application, event handling, and DOM manipulation.
 
+To run this project, download the repository to your local machine, and drag index.html to your browser.
 
 # Project Requirements
 
