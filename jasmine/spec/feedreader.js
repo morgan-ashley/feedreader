@@ -56,22 +56,20 @@ $(function() {
 
     /* Declaring a new test suite named, "New Feed Selection" */
     describe('New Feed Selection', function() {
-    
-        /* load a different feed before test */
         var currentArticle;
-        beforeEach(function(done){
-            currentArticle = $('.feed .entry').html();
-            loadFeed(1, done); 
+        
+        beforeEach(function(done) {
+            loadFeed(1, function() { // load a different feed before the test 
+                currentArticle = $('.feed').html();
+                done();
+            });
         });
-
-        /* returns loadFeed to original after test */
-        afterAll(function(done){
-            loadFeed(0, done); 
-        });
-
-         /* Test to see content changes after loadFeed is loaded*/
-        it('loads new feed when content changes', function() {
-            expect($('.feed .entry').html()).not.toBe(currentArticle); 
+        /* Testing to see that content changed after loading */
+        it('content changes', function(done) {
+            loadFeed(0, function() { // returns loadFeed to original state after test
+                expect($('.feed').html()).not.toEqual(currentArticle);
+                done();
+            });
         });
     });
 }());
