@@ -58,8 +58,9 @@ $(function() {
     describe('New Feed Selection', function() {
     
         /* load a different feed before test */
-        var currentArticle = $('.header-title').html();
+        var currentArticle;
         beforeEach(function(done){
+            currentArticle = $('.feed .entry').html();
             loadFeed(1, done); 
         });
 
@@ -67,11 +68,10 @@ $(function() {
         afterAll(function(done){
             loadFeed(0, done); 
         });
-        
+
          /* Test to see content changes after loadFeed is loaded*/
         it('loads new feed when content changes', function() {
-            /* testing header title to visibly see articles headers change */
-            expect($('.header-title').html()).not.toBe(currentArticle); 
+            expect($('.feed .entry').html()).not.toBe(currentArticle); 
         });
     });
 }());
